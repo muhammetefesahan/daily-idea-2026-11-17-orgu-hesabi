@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Örgü Hesabı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🧶 Örgü Hesabı</h1>
+    <p>Örnek parçanı ölç, giysinin parçalarını yaz; kaç ilmekle başlayacağını, nerede artıracağını ve kaç yumak ip alacağını hesaplayayım.</p>
+  </header>
+
+  <main>
+    <section class="sol">
+      <div class="kart">
+        <h2>Örnek parça</h2>
+        <div class="izgara uclu">
+          <label>Eni (cm) <input id="oGen" inputmode="decimal"></label>
+          <label>Boyu (cm) <input id="oYuk" inputmode="decimal"></label>
+          <label>Ağırlığı (g) <input id="oGram" inputmode="decimal"></label>
+          <label>Bu ende kaç ilmek? <input id="oIlmek" inputmode="decimal"></label>
+          <label>Bu boyda kaç sıra? <input id="oSira" inputmode="decimal"></label>
+        </div>
+        <p class="not">Asıl ipinle ve şişinle en az 12×12 cm bir parça ör, yıka ve kurut; ortasındaki 10×10 cm'yi say. Mutfak tartısıyla tartarsan ip hesabı da çıkar.</p>
+      </div>
+
+      <div class="kart">
+        <h2>Parçalar</h2>
+        <div class="tablo-kap">
+          <table class="parcalar">
+            <thead><tr><th>Parça</th><th>Başlangıç eni</th><th>Bitiş eni</th><th>Boyu</th><th>Adet</th><th></th></tr></thead>
+            <tbody id="parcalar"></tbody>
+          </table>
+        </div>
+        <button type="button" id="parcaEkle" class="ikinci">+ Parça ekle</button>
+        <p class="not">Ölçüler cm. Kol gibi daralan ya da genişleyen parçalarda başlangıç ve bitiş enini ayrı yaz.</p>
+      </div>
+
+      <div class="kart">
+        <h2>İp ve ben</h2>
+        <div class="izgara uclu">
+          <label>Bir yumak (g) <input id="yGram" inputmode="decimal"></label>
+          <label>Bir yumak (m) <input id="yMetre" inputmode="decimal"></label>
+          <label>Yumak fiyatı (TL) <input id="yFiyat" inputmode="decimal"></label>
+          <label>Fire payı (%) <input id="fire" inputmode="decimal"></label>
+          <label>Dakikada kaç ilmek? <input id="hiz" inputmode="decimal"></label>
+        </div>
+      </div>
+
+      <div class="kart">
+        <h2>Ölçek</h2>
+        <div class="olcek">
+          <input type="range" id="olcek" min="0.5" max="5" step="0.1" aria-label="Ölçek">
+          <b id="olcekYazi">×1</b>
+        </div>
+        <div class="dugmeler">
+          <button type="button" class="ikinci" data-olcek="1">Benim boyum ×1</button>
+          <button type="button" class="ikinci" data-olcek="0.5">Çocuk ×0,5</button>
+          <button type="button" class="ikinci" data-olcek="3">Heykel ×3</button>
+        </div>
+        <p class="not">Bütün ölçüler bu katla büyür. Kenarlar k kat büyürken ip k² kat artar.</p>
+      </div>
+
+      <div class="kart islemler">
+        <button type="button" id="ornek" class="ikinci">Örnek koy</button>
+        <button type="button" id="yedekAl" class="ikinci">Yedek al</button>
+        <label class="ikinci dugme">Yedek yükle<input id="yedekYukle" type="file" accept="application/json,.json"></label>
+        <p class="not" id="islemYazi">Her şey sadece bu tarayıcıda duruyor.</p>
+      </div>
+    </section>
+
+    <section class="sag">
+      <div class="kart ozet" id="ozet"></div>
+      <div class="kart">
+        <h2>Tarif</h2>
+        <ol id="tarif" class="tarif"></ol>
+      </div>
+      <div class="kart">
+        <h2>Kopyalanacak tarif</h2>
+        <textarea id="metin" rows="10" readonly aria-label="Tarif metni"></textarea>
+        <button type="button" id="kopyala" class="ikinci">📋 Kopyala</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
